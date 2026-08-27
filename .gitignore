@@ -1,5 +1,7 @@
 # general files
-
+*.docx
+*.png
+*.pptx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
