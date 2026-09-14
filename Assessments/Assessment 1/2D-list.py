@@ -1,35 +1,43 @@
 """
 Program: Temperature Analysis
+Requires: Python 3.10 or higher (tested on Python 3.14.3)
 Description: Create a 2D list of hourly temperatures for a 31 day month then
              - calculate the noon average, 
              - sort daily temperatures,
              - perform a binary search,
              - find daily high/low temperatures.
+             
 Author: Michael Webb
 Student ID: 20172813
 Date: 2026-09-10
 Version: 1.0
 """
 
+
 # Import the random module to generate random temperatures using a Gaussian distribution.
+# https://www.geeksforgeeks.org/python/random-gauss-function-in-python/
 import random
 
-# Set parameters for Gaussian distribution
+# Set global variables for Gaussian distribution
 MU = 25.0       # Mean temperature
 SIGMA = 3.5     # Standard deviation
 
-# Set the number of days and hours for the 2D list
-
+# Set global variables for the number of days and hours for the 2D list
 DAYS = 31
 HOURS = 24
 
-# Create the 2D list of hourly temperatures
+""" Create the 2D list of hourly temperatures """
+# Create empty lists to hold the temperatures.
 temps = []
+daily_temps = []
+# This for loop creates a list of 31 (DAYS) lists, each containing 24 (HOURS) random temperatures.
 for day in range(DAYS):
-    daily_temps = []
+    # This for loop creates a list of 24 (HOURS) random temperatures for each DAY. 
     for hour in range(HOURS):
-        # Generate random temp rounded to 1 decimal place
+        # Generate random temp rounded to 1 decimal place.
+        # round is a built in function.
         temp = round(random.gauss(MU, SIGMA), 1)
+        # .append is a method from the built in list function.
         daily_temps.append(temp)
     temps.append(daily_temps)
 
@@ -38,8 +46,7 @@ print(temps)
 print()
 
 # -------------------------------------------------------------------
-# Part A: Calculate and display the average temperature at noon
-# Note: Noon corresponds to hour index 12 (13th hour of the day)
+# a)Write code to display the average temperature at noon 
 # -------------------------------------------------------------------
 noon_sum = 0
 for day in temps:
@@ -50,14 +57,17 @@ print("Average noon temperature:", noon_average)
 print()
 
 # -------------------------------------------------------------------
-# Part B: Sort each day's temperatures in ascending order
+# b) Sort the existing array of daily temps in ascending order 
+# (hint: use Python’s built in sort() method)
 # -------------------------------------------------------------------
 for day in temps:
     day.sort()
 
 
 # -------------------------------------------------------------------
-# Part C: Binary Search Function
+# c) Code your own binary search algorithm as a new function defined as follows 
+# (hint: many examples available online). Also write a comment just above 
+# the function definition with a short description of how it works.
 # -------------------------------------------------------------------
 def binary_search(array, item):
     """
@@ -88,7 +98,8 @@ def binary_search(array, item):
 
 
 # -------------------------------------------------------------------
-# Part D: Search for a specific temperature on the 5th day
+# d) Use your binary search to find out if the 5th day recorded a specific temp 
+# (eg. 21.1 degrees; pick your own value)
 # Note: The 5th day is at index 4
 # -------------------------------------------------------------------
 DAY_FIVE = temps[4]
@@ -107,7 +118,7 @@ print(f"Day 5 temperatures (sorted): {DAY_FIVE}")
 print()
 
 # -------------------------------------------------------------------
-# Part E: Find and display daily highs and lows
+# e) Print two lists, one showing all the daily highs and another the daily lows.
 # -------------------------------------------------------------------
 lows = []
 highs = []
