@@ -32,7 +32,7 @@ temps = []
 daily_temps = []
 # This for loop creates a list of 31 (DAYS) lists, each containing 24 (HOURS) random temperatures.
 for day in range(DAYS):
-    # This for loop creates a list of 24 (HOURS) random temperatures for each DAY. 
+    # This for loop creates a list of 24 (HOURS) random temperatures for each DAY.
     for hour in range(HOURS):
         # Generate random temp rounded to 1 decimal place.
         # round is a built in function.
@@ -46,7 +46,7 @@ print(temps)
 print()
 
 # -------------------------------------------------------------------
-# a)Write code to display the average temperature at noon 
+# a)Write code to display the average temperature at noon
 # -------------------------------------------------------------------
 noon_sum = 0
 for day in temps:
@@ -57,7 +57,7 @@ print("Average noon temperature:", noon_average)
 print()
 
 # -------------------------------------------------------------------
-# b) Sort the existing array of daily temps in ascending order 
+# b) Sort the existing array of daily temps in ascending order
 # (hint: use Python’s built in sort() method)
 # -------------------------------------------------------------------
 for day in temps:
@@ -65,8 +65,8 @@ for day in temps:
 
 
 # -------------------------------------------------------------------
-# c) Code your own binary search algorithm as a new function defined as follows 
-# (hint: many examples available online). Also write a comment just above 
+# c) Code your own binary search algorithm as a new function defined as follows
+# (hint: many examples available online). Also write a comment just above
 # the function definition with a short description of how it works.
 # -------------------------------------------------------------------
 def binary_search(array, item):
@@ -98,7 +98,7 @@ def binary_search(array, item):
 
 
 # -------------------------------------------------------------------
-# d) Use your binary search to find out if the 5th day recorded a specific temp 
+# d) Use your binary search to find out if the 5th day recorded a specific temp
 # (eg. 21.1 degrees; pick your own value)
 # Note: The 5th day is at index 4
 # -------------------------------------------------------------------
