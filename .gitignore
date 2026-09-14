@@ -1,4 +1,5 @@
 # general files
+.DS_Store
 *.docx
 *.png
 *.pptx
@@ -221,3 +222,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+Sessions/.DS_Store
