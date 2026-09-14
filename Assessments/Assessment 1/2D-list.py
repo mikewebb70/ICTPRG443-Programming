@@ -1,8 +1,10 @@
 """
-Program: 2D List Temperature Analysis
-Description: Create a 2D list of hourly temperatures for a 31 day month,
-             calculate the noon average, sort daily temperatures, perform a 
-             binary search, and find daily high/low temperatures.
+Program: Temperature Analysis
+Description: Create a 2D list of hourly temperatures for a 31 day month then
+             - calculate the noon average, 
+             - sort daily temperatures,
+             - perform a binary search,
+             - find daily high/low temperatures.
 Author: Michael Webb
 Student ID: 20172813
 Date: 2026-09-10
