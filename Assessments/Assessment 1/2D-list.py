@@ -26,6 +26,23 @@ SIGMA = 3.5     # Standard deviation
 DAYS = 31
 HOURS = 24
 
+""" Create the 2D list of hourly temperatures """
+# Create empty lists to hold the temperatures.
+TEMPS = []
+# This for loop creates a list of 31 (DAYS) lists, each containing 24 (HOURS) random temperatures.
+for day in range(DAYS):
+    DAILY_TEMPS = []
+    # This for loop creates a list of 24 (HOURS) random temperatures for each DAY.
+    for hour in range(HOURS):
+        # Generate random temp rounded to 1 decimal place.
+        # round is a built in function.
+        TEMP = round(random.gauss(MU, SIGMA), 1)
+        # .append is a method from the built in list function.
+        DAILY_TEMPS.append(TEMP)
+    TEMPS.append(DAILY_TEMPS)
+
+print("Generated Temperatures:")
+print(TEMPS)
 print("#---------------------------------------------------------------\n")
 
 # -------------------------------------------------------------------
