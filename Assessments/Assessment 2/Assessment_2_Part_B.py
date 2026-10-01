@@ -67,12 +67,14 @@ game_year = {
 }
 
 def clear_screen():
+    """Clear the console screen based on the operating system."""
     if os.name == "nt":
         os.system('cls')
     else:
         os.system('clear')
 
 def dict_menu():
+    """Display the dictionary menu and return the selected dictionary and its name."""
     while True:
         clear_screen()
         print("\n****  Available Dictionaries  ****\n")
@@ -98,6 +100,7 @@ def dict_menu():
             input("Press Enter to continue.")
 
 def view_dict():
+    """Display the selected dictionary."""
     clear_screen()
     selected_dict, selected_name = dict_menu()
     if selected_dict is not None:
@@ -112,6 +115,7 @@ def view_dict():
         print("Returning to Main Menu")
 
 def sort_dict():
+    """Display the selected dictionary in ascending key order."""
     clear_screen()
     selected_dict, selected_name = dict_menu()
     if selected_dict is not None:
@@ -145,6 +149,7 @@ def sort_dict_desc():
         print("Returning to Main Menu")
 
 def search_dict():
+    """Search for a key in the selected dictionary."""
     clear_screen()
     selected_dict, selected_name = dict_menu()
     if selected_dict is not None:
@@ -165,6 +170,7 @@ def search_dict():
         print("Returning to Main Menu")
 
 def add_dict():
+    """Add a key-value pair to the selected dictionary."""
     clear_screen()
     selected_dict, selected_name = dict_menu()
     if selected_dict is not None:
@@ -181,6 +187,7 @@ def add_dict():
         print("Returning to Main Menu")
 
 def delete_dict():
+    """Delete a key-value pair from the selected dictionary."""
     clear_screen()
     selected_dict, selected_name = dict_menu()
     if selected_dict is not None:
