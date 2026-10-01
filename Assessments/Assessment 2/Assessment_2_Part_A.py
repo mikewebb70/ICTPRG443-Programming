@@ -1,4 +1,3 @@
-
 """
 Program: Python Lists and Dictionaries (manage a collection of favourites)
 Requires: Python 3.10 or higher (tested on Python 3.14.3)
@@ -15,23 +14,6 @@ Version: 1.0
 """
 
 #-----------------------------------------------------------------------------
-
-"""
-Part A
-In the first part of this assessment, you must design, code, and test a program that uses a Python list data structure.
-Use the following scenario:
-1.	A list that stores at least 12 of your favourite actors/actresses’ names.
-2.	A list that stores at least 12 of your favourite movies.
-3.	A list that stores at least 12 of your favourite games.
-4.	Write a Python program that provides the ability to:
-4.1.	Create a list from scenario above
-4.2.	Add a value to the list
-4.3.	Delete a value from the list
-4.4.	Sort all the data in the list in the ascending order. Sort all the data in the list in the descending order.
-4.5.	Search for the value in the list asking user for input.
-5.	Debug and test your program. You must conduct program tests to test the functionality specified above
-"""
-
 import os
 
 # 1. A list that stores at least 12 of your favourite actors/actresses’ names.
@@ -83,12 +65,14 @@ games = [
     ]
 
 def clear_screen():
+    """Clear the console screen based on the operating system."""
     if os.name == "nt":
         os.system('cls')
     else:
         os.system('clear')
 # 4.
 def main_menu():
+    """Display the main menu."""
     print("\n****  Menu  ****\n")
     print("1. Display List")
     print("2. Add a Favorite")
@@ -100,6 +84,7 @@ def main_menu():
     print("****************\n")
 
 def list_menu():
+    """Display the list menu and return the selected list and its name."""
     while True:
         clear_screen()
         print("\n****  Available List  ****\n")
@@ -125,6 +110,7 @@ def list_menu():
             input("Press Enter to continue.")
 
 def view_list():
+    """View the selected list."""
     clear_screen()
     selected_list, selected_name = list_menu()
     if selected_list is not None:
@@ -139,6 +125,7 @@ def view_list():
         print("Returning to Main Menu")
 
 def sort_list():
+    """Sort the selected list in ascending order."""
     clear_screen()
     selected_list, selected_name = list_menu()
     if selected_list is not None:
@@ -154,6 +141,7 @@ def sort_list():
         print("Returning to Main Menu")
 
 def sort_list_desc():
+    """Sort the selected list in descending order."""
     clear_screen()
     selected_list, selected_name = list_menu()
     if selected_list is not None:
@@ -169,6 +157,7 @@ def sort_list_desc():
         print("Returning to Main Menu")
 
 def search():
+    """Search for a favorite item in the selected list."""
     clear_screen()
     selected_list, selected_name = list_menu()
     if selected_list is not None:
@@ -189,6 +178,7 @@ def search():
         print("Returning to Main Menu")
 
 def add_favorite():
+    """Add a favorite item to the selected list."""
     clear_screen()
     selected_list, selected_name = list_menu()
     if selected_list is not None:
@@ -204,6 +194,7 @@ def add_favorite():
         print("Returning to Main Menu")
 
 def delete_favorite():
+    """Delete a favorite item from the selected list."""
     clear_screen()
     selected_list, selected_name = list_menu()
     if selected_list is not None:

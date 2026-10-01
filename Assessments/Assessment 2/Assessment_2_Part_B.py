@@ -1,6 +1,8 @@
 """
 Part B
-In the second part of this assessment, you must design, code, and test a Python program that uses a dictionary data structure.
+In the second part of this assessment, you must design, code, and test a Python program that 
+uses a dictionary data structure.
+
 Use the following scenario:
 7.	A dictionary that stores at least 12 of your favourite actors/actresses’ names and birthdays.
 8.	A dictionary that stores at least 12 of your favourite movies and release year.
@@ -9,9 +11,11 @@ Use the following scenario:
 10.1.	Create a dictionary from the scenario above
 10.2.	Add a value to the dictionary
 10.3.	Delete a value from the dictionary
-10.4.	Sort all the data in the dictionary in the ascending order. Sort all the data in the dictionary in the descending order.
+10.4.	Sort all the data in the dictionary in the ascending order. Sort all the data in the 
+        dictionary in the descending order.
 10.5.	Search for the value in the dictionary asking user for input.
-11.	Debug and test your program. You must conduct program tests to test the functionality specified above
+11.	Debug and test your program. You must conduct program tests to test the functionality 
+    specified above
 """
 import os
 
@@ -124,6 +128,7 @@ def sort_dict():
         print("Returning to Main Menu")
 
 def sort_dict_desc():
+    """Display the selected dictionary in descending key order."""
     clear_screen()
     selected_dict, selected_name = dict_menu()
     if selected_dict is not None:
