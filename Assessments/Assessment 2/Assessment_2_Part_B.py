@@ -19,6 +19,7 @@ Use the following scenario:
 """
 import os
 
+
 # Date format chosen for readability vs ISO8601 formate (YYYY-MM-DD).
 # Since sorting will be done on keys, this is fine.
 actor_birthday = {
@@ -65,6 +66,18 @@ game_year = {
     "Gears of War": "2006",
     "Team Fortress": "1996"
 }
+
+def main_menu():
+    """Display the main menu."""
+    print("\n****  Menu  ****\n")
+    print("1. Display List")
+    print("2. Add a Favorite")
+    print("3. Delete a Favorite")
+    print("4. Sort List (Ascending)")
+    print("5. Sort List (Descending)")
+    print("6. Search Favorites")
+    print("\n7. Exit Programme")
+    print("****************\n")
 
 def clear_screen():
     """Clear the console screen based on the operating system."""
@@ -203,3 +216,31 @@ def delete_dict():
         input("\nPress Enter to return to the main menu")
     else:
         print("Returning to Main Menu")
+
+# Menu Selection
+while True:
+    clear_screen()
+    main_menu()
+    choice = input("Enter your choice (1-7): ")
+    if choice == '1':
+        print("Select list to display: ")
+        view_dict()
+    elif choice == '2':
+        add_dict()
+    elif choice == '3':
+        delete_dict()
+    elif choice == '4':
+        sort_dict()
+    elif choice == '5':
+        sort_dict_desc()
+    elif choice == '6':
+        search_dict()
+    elif choice == '7':
+        print("exiting program. goodbye!")
+        break
+    else:
+        print("Invalid choice. Please enter a number between 1 and 7.")
+        input("Press Enter to continue.")
+        continue
+
+#- END OF PROGRAMME ---------------------------------------------------------------
