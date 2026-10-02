@@ -210,7 +210,7 @@ def delete_favorite():
         print("----------------------------------")
 
 
- # Menu Selection
+# Menu Selection
 while True:
     clear_screen()
     main_menu()
