@@ -88,16 +88,15 @@ def dict_menu():
 
         if dict_choice == '1':
             return actor_birthday, "Actors and Birthdays"
-        elif dict_choice == '2':
+        if dict_choice == '2':
             return movie_year, "Movies and Release Years"
-        elif dict_choice == '3':
+        if dict_choice == '3':
             return game_year, "Games and Release Years"
-        elif dict_choice == '4':
+        if dict_choice == '4':
             print("Returning to Main Menu")
             return None, None
-        else:
-            print("Invalid choice. Please enter a number between 1 and 4.")
-            input("Press Enter to continue.")
+        print("Invalid choice. Please enter a number between 1 and 4.")
+        input("Press Enter to continue.")
 
 def view_dict():
     """Display the selected dictionary."""
