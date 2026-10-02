@@ -217,7 +217,7 @@ def delete_dict():
     else:
         print("Returning to Main Menu")
 
-# Menu Selection
+# Menu Selection Loop
 while True:
     clear_screen()
     main_menu()
