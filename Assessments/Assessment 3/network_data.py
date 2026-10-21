@@ -42,7 +42,7 @@ network_devices = [
     "Development Server",
     "Mail Server",
     "File Server",
-    "Router",
+    "Router01",
     "Active Directory Server"
 ]
 #-------------------------------------------------------------------------------------------------
@@ -126,7 +126,7 @@ def add_network_device():
         print("Invalid device name or IP address.")
 
 #-------------------------------------------------------------------------------------------------
-# Functions to display network devices and services
+# Functions to display network devices and services for dictionaries
 def display_network_devices():
     """
     Iterate through the network devices dictionary and print each device
