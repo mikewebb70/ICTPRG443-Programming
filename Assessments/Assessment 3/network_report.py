@@ -11,7 +11,7 @@ Date: 2026-11-28
 Version: 1.0
 """
 import os
-
+from network_data import network_devices_dict, network_services_ports
 
 # Function to display a heading for sections of the program
 def file_heading(title):
