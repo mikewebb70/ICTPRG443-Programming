@@ -1,12 +1,10 @@
 """
-Program: Create and manage python lists, dictionaries and TXT file (manage network data)
+Program:  network_data.py Create and manage python lists, dictionaries and TXT file (manage network data)
 Requires: Python 3.10 or higher (tested on Python 3.14.3)
 Description: Demonstrates Python data structures use:
-             - Part A: Manage Python lists and dictionaries of network devices, IP addresses,
-                services and ports with ability to search, add, delete and sort by device or
-                service name.
-             - Part B:  Generate a text report the network devices, IP addresses, network services 
-                and port numbers.
+    - Part A:   Manage Python lists and dictionaries of network devices, IP addresses,
+                    services and ports with ability to search, add, delete and sort by device or
+                    service name.
 Author: Michael Webb
 Student ID: 20172813
 Date: 2026-11-28
@@ -27,6 +25,12 @@ def clear_screen():
         subprocess.run(["cmd", "/c", "cls"], check=False)
     else:
         subprocess.run(["clear"], check=False)
+
+# Function to display a heading for sections of the program
+def heading(title):
+    print("-" * 40)
+    print(title)
+    print("-" * 40)
 
 # -------------------------
 
@@ -103,7 +107,7 @@ def add_network_device():
     then add them to the network device list and dictionary.
     """
     clear_screen()
-    print("--- Add Network Device ---")
+    heading("Add Network Device")
     
     # Loop until a non-empty, unique device name is provided
     while True:
@@ -160,7 +164,8 @@ def display_network_devices():
     and its corresponding IP address.
     """
     clear_screen()
-    print("--- Network Devices and IP Addresses ---")
+    heading("Network Devices and IP Addresses")
+
     for device, ip in network_devices_dict.items():
         print(f"{device} : {ip}")
     input("\nPress Enter to return to the main menu")
@@ -168,7 +173,8 @@ def display_network_devices():
 def display_network_services():
     """Print each service and its corresponding port number."""
     clear_screen()
-    print("--- Network Services and Port Numbers ---")
+    heading("Network Services and Port Numbers")
+  
     for service, port in network_services_ports.items():
         print(f"{service} : {port}")
     input("\nPress Enter to return to the main menu")
@@ -179,7 +185,8 @@ def display_network_services():
 def delete_network_device():
     """Ask user for existing device name and remove it from lists and dictionary."""
     clear_screen()
-    print("--- Delete Network Device ---")
+    heading("Delete Network Device")
+  
     device_to_delete = input("Enter the name of the network device to delete: ").strip()
     
     for device in network_devices_dict.keys():
@@ -207,14 +214,14 @@ def sort_menu():
     """Allow user to select which data structure to sort and display."""
     while True:
         clear_screen()
-        print("--- Sort Options ---")
+        heading("Sort Options")
         print("1. Sort Network Devices (Alphabetically by Name)")
         print("2. Sort Network Services (Alphabetically by Service Name)")
         print("3. Return to Main Menu")
-        choice = input("\nEnter choice (1 or 2): ").strip()
+        choice = input("\nEnter choice (1, 2 or 3): ").strip()
         if choice == '1':
             clear_screen()
-            print("--- Sorted Network Devices ---")
+            heading("Sorted Network Devices")
             sorted_devices = dict(sorted(network_devices_dict.items()))
             for device, ip in sorted_devices.items():
                 print(f"{device} : {ip}")
@@ -222,7 +229,7 @@ def sort_menu():
             break
         elif choice == '2':
             clear_screen()
-            print("--- Sorted Network Services ---")
+            heading("Sorted Network Services")
             sorted_services = dict(sorted(network_services_ports.items()))
             for service, port in sorted_services.items():
                 print(f"{service} : Port {port}")
@@ -245,7 +252,7 @@ def search_network_device():
     Search for a network device by name and display its IP address.
     """
     clear_screen()
-    print("--- Search Network Device ---")
+    heading("Search Network Device")
     search_term = input("Enter the name of the network device to search for: ").strip()
     found = False
     for device, ip in network_devices_dict.items():
@@ -265,7 +272,7 @@ def search_network_service():
     Search for a network service by name and display its port number.
     """
     clear_screen()
-    print("--- Search Network Service ---")
+    heading("Search Network Service")
     search_term = input("Enter the name of the network service to search for: ")
     found = False
     for service, port in network_services_ports.items():
@@ -284,7 +291,7 @@ def search_menu():
     """Allow user to select which data structure to search."""
     while True:
         clear_screen()
-        print("--- Search Options ---")
+        heading("Search Options")
         print("1. Search Network Devices")
         print("2. Search Network Services")
         print("3. Return to Main Menu")
@@ -305,7 +312,7 @@ def search_menu():
 
 def main_menu():
     """Display the main menu."""
-    print("\n****  Menu  ****\n")
+    heading("Main Menu")
     print("1. Add Network Devices and IP Addresses")
     print("2. Delete a Network Device")
     print("3. Sort Network Devices or Services")
@@ -313,7 +320,7 @@ def main_menu():
     print("5. Display ALL Network Devices and IP Addresses")
     print("6. Display ALL Network Services and Port Numbers")
     print("\n7. Exit Programme")
-    print("****************\n")
+    print("-" * 40 )
 
 # Menu Selection
 while True:
