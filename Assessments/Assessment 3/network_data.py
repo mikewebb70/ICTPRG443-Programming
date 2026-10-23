@@ -311,7 +311,7 @@ def search_menu():
 #-------------------------------------------------------------------------------------------------
 
 def main_menu():
-    """Display the main menu."""
+    """main menu display."""
     heading("Main Menu")
     print("1. Add Network Devices and IP Addresses")
     print("2. Delete a Network Device")
@@ -323,26 +323,33 @@ def main_menu():
     print("-" * 40 )
 
 # Menu Selection
-while True:
-    clear_screen()
-    main_menu()
-    choice = input("Enter your choice (1-7): ").strip()
-    if choice == '1':
-        add_network_device()
-    elif choice == '2':
-        delete_network_device()
-    elif choice == '3':
-        sort_menu()
-    elif choice == '4':
-        search_menu()
-    elif choice == '5':
-        display_network_devices()
-    elif choice == '6':
-        display_network_services()
-    elif choice == '7':
+
+def main():
+    """
+    Main program loop to display the menu and handle user input for  network data  tasks.
+    """
+    while True:
         clear_screen()
-        print("Exiting program. Goodbye!")
-        break
-    else:
-        print("Invalid choice. Please enter a number between 1 and 7.")
-        input("Press Enter to continue.")
+        main_menu()
+        choice = input("Enter your choice (1-7): ").strip()
+        if choice == '1':
+            add_network_device()
+        elif choice == '2':
+            delete_network_device()
+        elif choice == '3':
+            sort_menu()
+        elif choice == '4':
+            search_menu()
+        elif choice == '5':
+            display_network_devices()
+        elif choice == '6':
+            display_network_services()
+        elif choice == '7':
+            clear_screen()
+            print("Exiting program. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 7.")
+            input("Press Enter to continue.")
+
+main()  # Start the program
