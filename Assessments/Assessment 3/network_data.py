@@ -352,4 +352,5 @@ def main():
             print("Invalid choice. Please enter a number between 1 and 7.")
             input("Press Enter to continue.")
 
-main()  # Start the program
+if __name__ == "__main__":
+    main()  # Start the program
