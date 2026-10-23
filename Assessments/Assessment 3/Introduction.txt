@@ -1,0 +1,17 @@
+INTRODUCTION
+------------------------
+------------------------
+
+Network Solutions Australia is a small information technology company that provides network installation, management, monitoring and support services for organisations.
+
+The company works with a range of network devices, including routers, switches, wireless access points, servers, firewalls, printers and wireless controllers. These devices are connected using IP addresses and are managed by the company's IT and network support team.
+
+The company also supports common network services used by its customers. These include HTTP, HTTPS, FTP, SSH and DNS. Each network service operates using a specific port number. For example, HTTP uses port 80, HTTPS uses port 443, FTP uses port 21, SSH uses port 22 and DNS uses port 53.
+
+As the number of network devices and services increases, the IT team needs an efficient way to store, manage and document network information. Manually maintaining this information can result in errors and make it difficult to identify current network configurations.
+
+To improve the management of network information, the company has requested a Python-based Network Device Management and Monitoring System. The application will store network device names, IP addresses, network services and port numbers. It will allow network staff to add, delete, sort and search network information.
+
+The application will also generate a network report in a text file. This report will provide a clear summary of the current network devices, IP addresses, network services and associated port numbers. The system will help the IT team maintain accurate and organised network documentation.
+
+The project also demonstrates the use of Python programming concepts, including lists, dictionaries, functions, file handling, debugging, testing and client-server socket communication.
