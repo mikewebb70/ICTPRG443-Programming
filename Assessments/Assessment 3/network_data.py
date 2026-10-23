@@ -103,27 +103,34 @@ def add_network_device():
     then add them to the network device list and dictionary.
     """
     clear_screen()
-    new_device = input("Enter the name of the new network device: ").strip()
+    new_device = input("Enter the device name of the new network device: ").strip()
+    if not new_device:
+        print("IP device name cannot be empty.")
+        input("\nPress Enter to add a device name...")
+        add_network_device()  # Call the function again to allow re-entry
+    
+    # Check if the device already exists
+    for device in network_devices_dict.keys():
+        if new_device.lower() == device.lower():
+            print(f"Device '{device}' already exists.")
+            input("\nPress Enter to return to main menu...")
+            add_network_device()  # Call the function again to allow re-entry
+
     new_ip = input("Enter the IP address of the new network device: ").strip()
 
-    if new_device and new_ip:
-        # Check if the device already exists
-        if new_device in network_devices_dict:
-            print(f"Device '{new_device}' already exists {network_devices_dict[new_device]}.")
-            return
+    if not new_ip:
+        print("IP address cannot be empty.")
+        input("\nPress Enter to add an IP Address...")
 
-        # Add to the network device list
-        network_devices.append(new_device)
-        # Add to the network IP address list
-        network_ip_addresses.append(new_ip)
+      
+    # Update both parallel lists and the dictionary together
+    network_devices.append(new_device)
+    network_ip_addresses.append(new_ip)
+    network_devices_dict[new_device] = new_ip
 
-        # Update the dictionary with the new_device key and new_ip value
-        network_devices_dict[new_device] = new_ip
-
-        print(f"Added {new_device} with IP address {new_ip} to the network devices lists.")
-        print("Return to main menu")
-    else:
-        print("Invalid device name or IP address.")
+    print(f"\nSuccessfully added '{new_device}' : {new_ip}")
+    input("\nPress Enter to return to main menu...")
+    
 
 #-------------------------------------------------------------------------------------------------
 # Functions to display network devices and services for dictionaries
@@ -161,10 +168,15 @@ def delete_network_device():
             break
 
     if matched_device:
-        # Remove from dictionary and retrieve its IP
-        ip_address = network_devices_dict[matched_device]
-        print(f"Deleting {matched_device} with IP address {ip_address}.")
+        print(f"Deleting {matched_device}.")
         input("Press Enter to confirm deletion.")
+        # Remove from dictionary and retrieve its IP
+        ip_address = network_devices_dict.pop(matched_device)
+        # Remove from lists
+        network_devices.remove(matched_device)  
+        # Remove the corresponding IP address from the list
+        network_ip_addresses.remove(ip_address)
+        input(f"{matched_device} with IP address {ip_address} deleted. \n \npress Enter to return to the main menu.")
 #-------------------------------------------------------------------------------------------------
 
 # 7. Create a function which allows the user to choose what data to sort:
@@ -186,12 +198,16 @@ def sort_menu():
             sorted_devices = dict(sorted(network_devices_dict.items()))
             for device, ip in sorted_devices.items():
                 print(f"{device} : {ip}")
+            input("\nPress any key to retern to menu.")
+            break
         elif choice == '2':
             clear_screen()
             print("--- Sorted Network Services ---")
             sorted_services = dict(sorted(network_services_ports.items()))
             for service, port in sorted_services.items():
                 print(f"{service} : Port {port}")
+            input("\nPress any key to return to menu.")
+            break    
         elif choice == '3':
             print("Returning to Main Menu")
             break
