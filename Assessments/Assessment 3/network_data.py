@@ -103,25 +103,45 @@ def add_network_device():
     then add them to the network device list and dictionary.
     """
     clear_screen()
-    new_device = input("Enter the device name of the new network device: ").strip()
-    if not new_device:
-        print("IP device name cannot be empty.")
-        input("\nPress Enter to add a device name...")
-        add_network_device()  # Call the function again to allow re-entry
+    print("--- Add Network Device ---")
     
-    # Check if the device already exists
-    for device in network_devices_dict.keys():
-        if new_device.lower() == device.lower():
-            print(f"Device '{device}' already exists.")
-            input("\nPress Enter to return to main menu...")
-            add_network_device()  # Call the function again to allow re-entry
+    # Loop until a non-empty, unique device name is provided
+    while True:
+        new_device = input("Enter the device name of the new network device: ").strip()
+        
+        if not new_device:
+            print("Device name cannot be empty. Please try again.")
+            continue
+            
+        # Case-insensitive duplicate check
+        device_duplicate = False
+        for device in network_devices_dict.keys():
+            if new_device.lower() == device.lower():
+                print(f"Device '{device}' already exists. Please try again.")
+                device_duplicate = True
+                break # restart the loop to ask for a new device name
+                
+        if not device_duplicate:
+            break  # exit loop unique device name entered
 
-    new_ip = input("Enter the IP address of the new network device: ").strip()
+    # Loop until a non-empty IP address is provided
+    while True:
+        new_ip = input("Enter the IP address of the new network device: ").strip()
+        
+        if not new_ip:
+            print("IP address cannot be empty. Please try again.")
+            continue
 
-    if not new_ip:
-        print("IP address cannot be empty.")
-        input("\nPress Enter to add an IP Address...")
-
+        # Case-insensitive duplicate check
+        ip_duplicate = False
+        for ip in network_devices_dict.values():
+            if new_ip == ip:
+                print(f"IP Address '{ip}' already exists. Please try again.")
+                ip_duplicate = True
+                break # restart the loop to ask for a new device name
+                
+        if not ip_duplicate:
+            break  # exit loop unique IP entered
       
     # Update both parallel lists and the dictionary together
     network_devices.append(new_device)
