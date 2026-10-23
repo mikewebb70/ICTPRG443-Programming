@@ -25,34 +25,33 @@ output_filename = "network_report.txt"
 # Import dictionaries from Part A script
 from network_data import network_devices_dict, network_services_ports
 
-with open(output_filename, "w" ) as file:
-    #Write Report Header
-    file_heading("NETWORK REPORT")        
-    file.write("Author: Michael Webb\n")
-    file.write("Student ID: 20172813\n")
-    file.write("Date: 2026-11-28\n\n")
+file = open(output_filename, "w" )
+#Write Report Header
+file_heading("NETWORK REPORT")        
+file.write("Author: Michael Webb\n")
+file.write("Student ID: 20172813\n")
+file.write("Date: 2026-11-28\n\n")
 
-    # Step 3a: Write Network Devices Section
-    file.write("NETWORK DEVICES\n")
-    file.write("=" * 15 + "\n")
-    # Uses left-aligned string formatting (<25) for clean alignment
-    for device, ip in network_devices_dict.items():
-        file.write(f"{device} - {ip}\n")
-    file.write("\n")
+# Step 3a: Write Network Devices Section
+file_heading("NETWORK DEVICES\n")
 
-    # Write Network Services Section
-    file_heading("NETWORK SERVICES")
+for device, ip in network_devices_dict.items():
+    file.write(f"{device} - {ip}\n")
+file.write("\n")
 
-    for service, port in network_services_ports.items():
-        file.write(f"{service} - Port {port}\n")
-    file.write("\n")
+# Write Network Services Section
+file_heading("NETWORK SERVICES")
+for service, port in network_services_ports.items():
+    file.write(f"{service} - Port {port}\n")
+file.write("\n")
 
-    # Write Network Summary Section
-    file_heading("NETWORK SUMMARY")
-   
-    file.write(
+# Write Network Summary Section
+file_heading("NETWORK SUMMARY")
+
+file.write(
         "This report contains the network device names, IP addresses,\n"
         "network services and associated port numbers.\n"
     )
+file.close()
 
-    print(f"Report created successfully : {output_filename}")
+print(f"Report created successfully : {output_filename}")
