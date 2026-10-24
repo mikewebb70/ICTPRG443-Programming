@@ -38,7 +38,7 @@ def file_heading(title):
 # Import dictionaries from Part A script
 from network_data import network_devices_dict, network_services_ports
 
-file = open(scratch_file, "w" )
+file = open(report_file, "w" )
 #Write Report Header
 file_heading("NETWORK REPORT")        
 file.write("Author: Michael Webb\n")
@@ -76,20 +76,21 @@ def merge_files(report, scratch, intro):
     intro and scratch back into primary_report.
     """
     with (
-    open("report_file", "r"),
-    open("scratch_file", "w"),
+    open(report, "r") as in_file,
+    open(scratch, "w") as out_file, 
     ):
-        scratch_file.write(report_file.read())
+        out_file.write(in_file.read()) 
 
     print(f"Copied {os.path.basename(report)} to {os.path.basename(scratch)}")
 
     # Merge the intro_file and scratch_file into report_file
-    open(report, "w", encoding="utf-8")
-    for line in fileinput.input([intro, scratch]):
-        report.write(line)
+    with open(report, "w") as final_report:
+        for line in fileinput.input([intro, scratch]):
+            final_report.write(line)
 
     print(f"Merged report saved to: {report}")
 
 
 # Execute merge process
 merge_files(report_file, scratch_file, intro_file)
+
