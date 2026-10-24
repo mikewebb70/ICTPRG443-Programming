@@ -13,6 +13,7 @@ Version: 1.0
 import os # so we can open and write files
 import fileinput # so we can cleanly merge files
 import tempfile # so we can 
+
 # Import dictionaries from Part A script
 from network_data import network_devices_dict, network_services_ports
 
@@ -89,8 +90,15 @@ def merge_files(report, scratch, intro):
             final_report.write(line)
 
     print(f"Merged report saved to: {report}")
-
+    
+    # Clean up the scratch file
+    if os.path.exists(scratch_file):
+        os.remove(scratch_file)
+    print(f"Cleanup scratch file {os.path.basename(scratch_file)}")
 
 # Execute merge process
 merge_files(report_file, scratch_file, intro_file)
+
+
+
 
