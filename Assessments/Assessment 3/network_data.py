@@ -310,7 +310,7 @@ def search_menu():
 
 #-------------------------------------------------------------------------------------------------
 
-def main_menu():
+def menu():
     """main menu display."""
     heading("Main Menu")
     print("1. Add Network Devices and IP Addresses")
@@ -330,7 +330,7 @@ def main():
     """
     while True:
         clear_screen()
-        main_menu()
+        menu()
         choice = input("Enter your choice (1-7): ").strip()
         if choice == '1':
             add_network_device()
