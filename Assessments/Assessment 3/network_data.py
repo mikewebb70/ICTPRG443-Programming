@@ -14,6 +14,9 @@ Version: 1.0
 import os
 import subprocess
 
+# Import the merge_files function from the network_report script
+from network_report import merge_files
+
 # Function to clear the console screen, makes it easier to read the output of the programme.
 def clear_screen():
     """
