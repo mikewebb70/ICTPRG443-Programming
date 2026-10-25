@@ -14,8 +14,13 @@ import os # so we can open and write files
 import fileinput # so we can cleanly merge files
 import tempfile # so we can 
 
-# Import dictionaries from Part A script
-from network_data import network_devices_dict, network_services_ports
+
+# from network_data import network_devices_dict, network_services_ports
+# NOTE: This is causing an issue with circular dependencies
+# as network_data.py is imported by this script.  guarding using
+# name main idiom is not preventing this script from runining
+# on import.
+# 
 
 # Determine the absolute directory path where this script resides
 # Thankyou reddit r/python
@@ -33,11 +38,13 @@ def file_heading(title, file_var):
     file_var.write(f"{title.upper()}\n")
     file_var.write("-" * 40 + "\n")
 
-def create_report():
+# Loading functions and data from network_data.py locally to avoid importing the entire module globally
+# which was causing a circluar dependency loop. 
+# https://www.datacamp.com/tutorial/python-circular-import
+def create_report(devices_dict, service_dict):
     """Create a report file with the network data."""
     # Open the report file for writing using with statement for safer file handling and 
     # closing as well as better visability for Pylance LSP
-
     with open(report_file, "w") as file:
         #Write Report Header
         file_heading("NETWORK REPORT", file)        
@@ -96,10 +103,8 @@ def merge_files(report=report_file, intro=intro_file, scratch=scratch_file):
         os.remove(scratch_file)
     print(f"Cleanup scratch file {os.path.basename(scratch_file)}")
 
-
-def main():
-    # Execute report creation function
-    create_report()
-
 if __name__ == "__main__":
-    main()  # Start the program
+    # when this script is run directly for testing, import network_data.py  here locally
+    from network_data import network_devices_dict, network_services_ports
+    create_report(network_devices_dict, network_services_ports)
+    merge_files()
