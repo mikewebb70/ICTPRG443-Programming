@@ -14,8 +14,8 @@ Version: 1.0
 import os
 import subprocess
 
-# Import the merge_files function from the network_report script
-from network_report import merge_files
+# Import the generate_final_report function from the network_report.py script
+from network_report import generate_final_report
 
 # Function to clear the console screen, makes it easier to read the output of the programme.
 def clear_screen():
@@ -313,6 +313,15 @@ def search_menu():
 
 #-------------------------------------------------------------------------------------------------
 
+def generate_report_option():
+    """ Menu option for Part B report creation"""
+    clear_screen
+    heading("Create Network Report")
+    generate_final_report()
+    input("\nPress Enter to return to the main menu")
+
+#-------------------------------------------------------------------------------------------------
+
 def menu():
     """main menu display."""
     heading("Main Menu")
@@ -322,11 +331,11 @@ def menu():
     print("4. Search Network Devices or Services")
     print("5. Display ALL Network Devices and IP Addresses")
     print("6. Display ALL Network Services and Port Numbers")
-    print("\n7. Exit Programme")
+    print("7. Create Network Report")
+    print("\n8. Exit Programme")
     print("-" * 40 )
 
 # Menu Selection
-
 def main():
     """
     Main program loop to display the menu and handle user input for  network data  tasks.
@@ -348,6 +357,8 @@ def main():
         elif choice == '6':
             display_network_services()
         elif choice == '7':
+            generate_report_option()
+        elif choice == '8':
             clear_screen()
             print("Exiting program. Goodbye!")
             break

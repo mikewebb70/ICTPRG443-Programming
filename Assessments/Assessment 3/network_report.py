@@ -41,7 +41,7 @@ def file_heading(title, file_var):
 # Loading functions and data from network_data.py locally to avoid importing the entire module globally
 # which was causing a circluar dependency loop. 
 # https://www.datacamp.com/tutorial/python-circular-import
-def create_report(devices_dict, service_dict):
+def create_report(devices_dict, services_dict):
     """Create a report file with the network data."""
     # Open the report file for writing using with statement for safer file handling and 
     # closing as well as better visability for Pylance LSP
@@ -56,13 +56,13 @@ def create_report(devices_dict, service_dict):
         # Write Network Devices Section
         file_heading("NETWORK DEVICES", file)
 
-        for device, ip in network_devices_dict.items():
+        for device, ip in devices_dict.items():
             file.write(f"{device} - {ip}\n")
         file.write("\n")
 
         # Write Network Services Section
         file_heading("NETWORK SERVICES", file)
-        for service, port in network_services_ports.items():
+        for service, port in services_dict.items():
             file.write(f"{service} - Port {port}\n")
         file.write("\n")
 
@@ -103,8 +103,19 @@ def merge_files(report=report_file, intro=intro_file, scratch=scratch_file):
         os.remove(scratch_file)
     print(f"Cleanup scratch file {os.path.basename(scratch_file)}")
 
-if __name__ == "__main__":
-    # when this script is run directly for testing, import network_data.py  here locally
+def generate_final_report():
+    """ 
+    Create a final report file from the primary_report and intro mergered files
+    Target for user menu selection in network_data.py
+    """
+    # Local import prevents circular dependency and resolves the NameError
     from network_data import network_devices_dict, network_services_ports
+
     create_report(network_devices_dict, network_services_ports)
-    merge_files()
+    merge_files()   
+
+if __name__ == "__main__":
+    # uncomment the bellow statement when this script is run directly for testing to  import network_data.py
+    # 
+    # from network_data import network_devices_dict, network_services_ports
+    generate_final_report()
