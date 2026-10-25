@@ -13,17 +13,23 @@ Version: 1.0
 """
 import socket 
 
+host = '127.0.0.1'
+port = 1234
+hostname = socket.gethostname()
+
+print(f"Server is running on {hostname}")
+
 def start_server():
     """Initializes the server, binds to localhost:1234, and listens for connections."""
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host = '127.0.0.1'
-    port = 1234
+ 
 
     # Bind the socket to the address and port
     server_socket.bind((host, port))
     
     # Put the server into listening mode
     server_socket.listen(1)
+    print(f"Server is running on {hostname}")
     print(f"Server is listening on {host}:{port}...")
 
     while True:
@@ -32,6 +38,7 @@ def start_server():
         print(f"Connection established with {address}")
         
         # Send a confirmation message to the client
+        print(f"Sending data to the client...")
         message = "Connection successful. Welcome to the network management server."
         client_socket.send(message.encode())
         
