@@ -5,6 +5,8 @@
 *.pptx
 .vscode/
 AGENTS.md
+*.zip
+*.url
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
