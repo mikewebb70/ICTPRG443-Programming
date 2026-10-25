@@ -35,37 +35,40 @@ def file_heading(title, file_var):
 
 def create_report():
     """Create a report file with the network data."""
-    file = open(report_file, "w" )
-    #Write Report Header
-    file_heading("NETWORK REPORT", file)        
-    file.write("Author: Michael Webb\n")
-    file.write("Student ID: 20172813\n")
-    file.write("Date: 2026-11-28\n")
-    file.write("-" * 40 + "\n\n")
+    # Open the report file for writing using with statement for safer file handling and 
+    # closing as well as better visability for Pylance LSP
 
-    # Write Network Devices Section
-    file_heading("NETWORK DEVICES", file)
+    with (report_file, "w") as file:
+        #Write Report Header
+        file_heading("NETWORK REPORT", file)        
+        file.write("Author: Michael Webb\n")
+        file.write("Student ID: 20172813\n")
+        file.write("Date: 2026-11-28\n")
+        file.write("-" * 40 + "\n\n")
 
-    for device, ip in network_devices_dict.items():
-        file.write(f"{device} - {ip}\n")
-    file.write("\n")
+        # Write Network Devices Section
+        file_heading("NETWORK DEVICES", file)
 
-    # Write Network Services Section
-    file_heading("NETWORK SERVICES", file)
-    for service, port in network_services_ports.items():
-        file.write(f"{service} - Port {port}\n")
-    file.write("\n")
+        for device, ip in network_devices_dict.items():
+            file.write(f"{device} - {ip}\n")
+        file.write("\n")
 
-    # Write Network Summary Section
-    file_heading("NETWORK SUMMARY", file)
+        # Write Network Services Section
+        file_heading("NETWORK SERVICES", file)
+        for service, port in network_services_ports.items():
+            file.write(f"{service} - Port {port}\n")
+        file.write("\n")
+
+        # Write Network Summary Section
+        file_heading("NETWORK SUMMARY", file)
 
 
-    file.write(
-        "This report contains the network device names, IP addresses,\n"
-        "network services and associated port numbers.\n"
-    )
-    file.close()
-    print(f"Report created successfully : {report_file}")
+        file.write(
+            "This report contains the network device names, IP addresses,\n"
+            "network services and associated port numbers.\n"
+        )
+        print(f"Report created successfully : {report_file}")
+
 
 def merge_files(report, scratch, intro):
     """
