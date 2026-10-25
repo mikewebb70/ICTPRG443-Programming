@@ -21,55 +21,51 @@ from network_data import network_devices_dict, network_services_ports
 # Thankyou reddit r/python
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Define file names with absolute path in the script directory
+# Define file names with absolute path to the script directory
 report_file = os.path.join(script_dir, "network_report.txt")
 intro_file = os.path.join(script_dir, "Introduction.txt")
 scratch_file = os.path.join(script_dir, "scratch.txt")
 
 # Function to display a heading for sections of the program
-def file_heading(title):
+def file_heading(title, file_var):
     """Write an uppercase heading and separator line to an open file."""
-    file.write("-" * 40 + "\n")
-    file.write(f"{title.upper()}\n")
-    file.write("-" * 40 + "\n")
+    file_var.write("-" * 40 + "\n")
+    file_var.write(f"{title.upper()}\n")
+    file_var.write("-" * 40 + "\n")
+
+def create_report():
+    """Create a report file with the network data."""
+    file = open(report_file, "w" )
+    #Write Report Header
+    file_heading("NETWORK REPORT", file)        
+    file.write("Author: Michael Webb\n")
+    file.write("Student ID: 20172813\n")
+    file.write("Date: 2026-11-28\n")
+    file.write("-" * 40 + "\n\n")
+
+    # Write Network Devices Section
+    file_heading("NETWORK DEVICES", file)
+
+    for device, ip in network_devices_dict.items():
+        file.write(f"{device} - {ip}\n")
+    file.write("\n")
+
+    # Write Network Services Section
+    file_heading("NETWORK SERVICES", file)
+    for service, port in network_services_ports.items():
+        file.write(f"{service} - Port {port}\n")
+    file.write("\n")
+
+    # Write Network Summary Section
+    file_heading("NETWORK SUMMARY", file)
 
 
-
-
-# Import dictionaries from Part A script
-from network_data import network_devices_dict, network_services_ports
-
-file = open(report_file, "w" )
-#Write Report Header
-file_heading("NETWORK REPORT")        
-file.write("Author: Michael Webb\n")
-file.write("Student ID: 20172813\n")
-file.write("Date: 2026-11-28\n")
-file.write("-" * 40 + "\n\n")
-
-# Step 3a: Write Network Devices Section
-file_heading("NETWORK DEVICES")
-
-for device, ip in network_devices_dict.items():
-    file.write(f"{device} - {ip}\n")
-file.write("\n")
-
-# Write Network Services Section
-file_heading("NETWORK SERVICES")
-for service, port in network_services_ports.items():
-    file.write(f"{service} - Port {port}\n")
-file.write("\n")
-
-# Write Network Summary Section
-file_heading("NETWORK SUMMARY")
-
-file.write(
+    file.write(
         "This report contains the network device names, IP addresses,\n"
         "network services and associated port numbers.\n"
     )
-file.close()
-
-print(f"Report created successfully : {report_file}")
+    file.close()
+    print(f"Report created successfully : {report_file}")
 
 def merge_files(report, scratch, intro):
     """
@@ -80,7 +76,7 @@ def merge_files(report, scratch, intro):
     open(report, "r") as in_file,
     open(scratch, "w") as out_file, 
     ):
-        out_file.write(in_file.read()) 
+     out_file.write(in_file.read()) 
 
     print(f"Copied {os.path.basename(report)} to {os.path.basename(scratch)}")
 
@@ -96,9 +92,12 @@ def merge_files(report, scratch, intro):
         os.remove(scratch_file)
     print(f"Cleanup scratch file {os.path.basename(scratch_file)}")
 
-# Execute merge process
-merge_files(report_file, scratch_file, intro_file)
 
+def main():
+    # Execute report creation function
+    create_report()
+    # Execute merge function
+    merge_files(report_file, scratch_file, intro_file)
 
-
-
+if __name__ == "__main__":
+    main()  # Start the program
