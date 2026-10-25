@@ -192,12 +192,19 @@ def delete_network_device():
   
     device_to_delete = input("Enter the name of the network device to delete: ").strip()
     
+    # Initialise the variable so it exists even if no match is found
+    matched_device = None
+    
     for device in network_devices_dict.keys():
         if device_to_delete.lower() == device.lower():
             matched_device = device
             break
 
-    if matched_device:
+    if not matched_device:
+        # Gracefully exit and inform the user that the device does not exist
+        print(f"\nDevice '{device_to_delete}' not found in the network records.")
+        input("Press Enter to return to the main menu.")
+    else:
         print(f"Deleting {matched_device}.")
         input("Press Enter to confirm deletion.")
         # Remove from dictionary and retrieve its IP
@@ -207,6 +214,7 @@ def delete_network_device():
         # Remove the corresponding IP address from the list
         network_ip_addresses.remove(ip_address)
         input(f"{matched_device} with IP address {ip_address} deleted. \n \npress Enter to return to the main menu.")
+
 #-------------------------------------------------------------------------------------------------
 
 # 7. Create a function which allows the user to choose what data to sort:
