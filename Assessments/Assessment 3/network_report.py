@@ -38,7 +38,7 @@ def create_report():
     # Open the report file for writing using with statement for safer file handling and 
     # closing as well as better visability for Pylance LSP
 
-    with (report_file, "w") as file:
+    with open(report_file, "w") as file:
         #Write Report Header
         file_heading("NETWORK REPORT", file)        
         file.write("Author: Michael Webb\n")
@@ -69,8 +69,9 @@ def create_report():
         )
         print(f"Report created successfully : {report_file}")
 
-
-def merge_files(report, scratch, intro):
+# moved to setting default parameter values as named arguments to the function 
+# instead of calling the function with positional argumetns with the file names/locations
+def merge_files(report=report_file, intro=intro_file, scratch=scratch_file):
     """
     Copies primary_report to scratch file, then uses fileinput to merge
     intro and scratch back into primary_report.
@@ -99,8 +100,6 @@ def merge_files(report, scratch, intro):
 def main():
     # Execute report creation function
     create_report()
-    # Execute merge function
-    merge_files(report_file, scratch_file, intro_file)
 
 if __name__ == "__main__":
     main()  # Start the program
