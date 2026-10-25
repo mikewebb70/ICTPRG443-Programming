@@ -46,12 +46,20 @@ def create_report(devices_dict, services_dict):
     # Open the report file for writing using with statement for safer file handling and 
     # closing as well as better visability for Pylance LSP
     with open(report_file, "w") as file:
+
+   #-------------------------------------------------------------------------------------------------
+   # 2. Write a clear heading to the report.
+
         #Write Report Header
         file_heading("NETWORK REPORT", file)        
         file.write("Author: Michael Webb\n")
         file.write("Student ID: 20172813\n")
         file.write("Date: 2026-11-28\n")
         file.write("-" * 40 + "\n\n")
+
+    #-------------------------------------------------------------------------------------------------
+    #   3.	Use the network device and network service dictionaries from network_data.py to generate the report. 
+    #   You should import the required dictionaries into network_report.py rather thanmanually recreating or duplicating the data. 
 
         # Write Network Devices Section
         file_heading("NETWORK DEVICES", file)
@@ -75,6 +83,9 @@ def create_report(devices_dict, services_dict):
             "network services and associated port numbers.\n"
         )
         print(f"Report created successfully : {report_file}")
+
+#-------------------------------------------------------------------------------------------------
+# 6.	Merge the network_report.txt with Introduction.txt. 
 
 # moved to setting default parameter values as named arguments to the function 
 # instead of calling the function with positional argumetns with the file names/locations
