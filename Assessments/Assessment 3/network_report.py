@@ -12,8 +12,7 @@ Version: 1.0
 """
 import os # so we can open and write files
 import fileinput # so we can cleanly merge files
-import tempfile # so we can 
-
+ 
 
 # from network_data import network_devices_dict, network_services_ports
 # NOTE: This is causing an issue with circular dependencies
@@ -63,15 +62,15 @@ def create_report(devices_dict, services_dict):
 
         # Write Network Devices Section
         file_heading("NETWORK DEVICES", file)
-
+       
         for device, ip in devices_dict.items():
-            file.write(f"{device} - {ip}\n")
+            file.write(f"{device:<25} - {ip}\n")
         file.write("\n")
 
         # Write Network Services Section
         file_heading("NETWORK SERVICES", file)
         for service, port in services_dict.items():
-            file.write(f"{service} - Port {port}\n")
+            file.write(f"{service:<8} - Port {port}\n")
         file.write("\n")
 
         # Write Network Summary Section
@@ -82,7 +81,7 @@ def create_report(devices_dict, services_dict):
             "This report contains the network device names, IP addresses,\n"
             "network services and associated port numbers.\n"
         )
-        print(f"Report created successfully : {report_file}")
+        print(f"\nReport created successfully : {report_file}")
 
 #-------------------------------------------------------------------------------------------------
 # 6.	Merge the network_report.txt with Introduction.txt. 
@@ -100,19 +99,19 @@ def merge_files(report=report_file, intro=intro_file, scratch=scratch_file):
     ):
      out_file.write(in_file.read()) 
 
-    print(f"Copied {os.path.basename(report)} to {os.path.basename(scratch)}")
+    print(f"\nCopied {os.path.basename(report)} to {os.path.basename(scratch)}")
 
     # Merge the intro_file and scratch_file into report_file
     with open(report, "w") as final_report:
         for line in fileinput.input([intro, scratch]):
             final_report.write(line)
 
-    print(f"Merged report saved to: {report}")
+    print(f"\nMerged report saved to: {report}")
     
     # Clean up the scratch file
     if os.path.exists(scratch_file):
         os.remove(scratch_file)
-    print(f"Cleanup scratch file {os.path.basename(scratch_file)}")
+    print(f"\nCleanup scratch file {os.path.basename(scratch_file)}")
 
 def generate_final_report():
     """ 
