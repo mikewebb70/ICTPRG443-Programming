@@ -22,7 +22,6 @@ print(f"Server is running on {hostname}")
 def start_server():
     """Initializes the server, binds to localhost:1234, and listens for connections."""
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
- 
 
     # Bind the socket to the address and port
     server_socket.bind((host, port))
@@ -44,7 +43,7 @@ def start_server():
         
         # Close the connection
         client_socket.close()
-        break  # Exiting after one connection for testing purposes
+        break  # Exiting after client connection closes 
 
 if __name__ == "__main__":
     start_server()
