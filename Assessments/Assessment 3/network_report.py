@@ -5,6 +5,7 @@ Description: Demonstrates Python data structures use:
     - Part B:   
     Generate a text report called network_report.txt with the network devices, IP addresses, network services 
      and port numbers then merge the network_report.txt with Introduction.txt
+Repo: https://github.com/mikewebb70/ICTPRG443-Programming/tree/main/Assessments/Assessment%203
 Author: Michael Webb
 Student ID: 20172813
 Date: 2026-11-28
@@ -94,8 +95,8 @@ def merge_files(report=report_file, intro=intro_file, scratch=scratch_file):
     intro and scratch back into primary_report.
     """
     with (
-    open(report, "r") as in_file,
-    open(scratch, "w") as out_file, 
+        open(report, "r") as in_file,
+        open(scratch, "w") as out_file, 
     ):
      out_file.write(in_file.read()) 
 
@@ -112,6 +113,7 @@ def merge_files(report=report_file, intro=intro_file, scratch=scratch_file):
     if os.path.exists(scratch_file):
         os.remove(scratch_file)
     print(f"\nCleanup scratch file {os.path.basename(scratch_file)}")
+    
 
 def generate_final_report():
     """ 

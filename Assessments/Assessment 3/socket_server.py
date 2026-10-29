@@ -6,6 +6,7 @@ Description: Demonstrates Python data structures use:
     Create a socket object after importing the socket library. 
     Uses the bind() method to bind the server to the local host address (127.0.0.1)
     and IPv4 port 1234.
+Repo: https://github.com/mikewebb70/ICTPRG443-Programming/tree/main/Assessments/Assessment%203
 Author: Michael Webb
 Student ID: 20172813
 Date: 2026-10-25
@@ -38,11 +39,12 @@ def start_server():
         
         # Send a confirmation message to the client
         print(f"Sending data to the client...")
-        message = "Connection successful. Welcome to the network management server."
+        message = "Connection successful. Welcome to the network management server.\n"
         client_socket.send(message.encode())
         
         # Close the connection
         client_socket.close()
+        print(f"Client connection terminated...shutting down server")
         break  # Exiting after client connection closes 
 
 if __name__ == "__main__":
