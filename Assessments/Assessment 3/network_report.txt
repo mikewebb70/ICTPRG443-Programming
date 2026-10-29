@@ -26,29 +26,29 @@ Date: 2026-11-28
 ----------------------------------------
 NETWORK DEVICES
 ----------------------------------------
-Access Point - 192.168.1.1
-Floor 1 Switch - 192.168.1.2
-Floor 2 Switch - 192.168.1.3
-Firewall - 192.168.1.4
-Jump Box - 192.168.2.1
-Web Server - 192.168.2.2
-Database Server - 192.168.2.3
-Development Server - 172.16.0.4
-Mail Server - 172.16.0.5
-File Server - 172.16.0.6
-Router01 - 10.0.0.1
-Active Directory Server - 10.40.2.16
+Access Point              - 192.168.1.1
+Floor 1 Switch            - 192.168.1.2
+Floor 2 Switch            - 192.168.1.3
+Firewall                  - 192.168.1.4
+Jump Box                  - 192.168.2.1
+Web Server                - 192.168.2.2
+Database Server           - 192.168.2.3
+Development Server        - 172.16.0.4
+Mail Server               - 172.16.0.5
+File Server               - 172.16.0.6
+Router01                  - 10.0.0.1
+Active Directory Server   - 10.40.2.16
 
 ----------------------------------------
 NETWORK SERVICES
 ----------------------------------------
-HTTPS - Port 443
-FTP - Port 21
-SSH - Port 22
-SMTP - Port 25
-DNS - Port 53
-RDP - Port 3389
-LDAP - Port 389
+HTTPS    - Port 443
+FTP      - Port 21
+SSH      - Port 22
+SMTP     - Port 25
+DNS      - Port 53
+RDP      - Port 3389
+LDAP     - Port 389
 
 ----------------------------------------
 NETWORK SUMMARY
